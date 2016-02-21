@@ -1,0 +1,88 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>BuBBles by Krishna Kamal</title>
+</head>
+<script src="jquery-1.4.1.js"></script>
+
+<style>
+   .circle{ width: 20px;
+    height: 20px;
+    background-color: #000;
+    border-radius: 100px; position:absolute; }
+	
+	body{background-color:#000;}
+	
+</style>
+
+<script>
+							   
+function bubbles() {
+	
+    i = 0;
+	
+	
+   ScreenWidth = $(window).width();
+   ScreenHeight = $(window).height();
+   
+//calling create elements function
+
+createFun();
+ 
+   $(".circle").animate({
+     opacity: 0.0,
+     height: 100,
+     width: 100
+   }, 5000).animate({
+     opacity: 0.0,
+     height: 100,
+     width: 100
+   }, 1000, function()
+   {
+	  $(this).remove(); 
+   }).promise().done(bubbles);
+
+ }
+ 
+ 
+ // Creating elements here
+
+function createFun()
+{
+	for (i = 0; i < 10; i++)
+   {
+      CreateDiv = document.createElement('div');
+      AppendElem = document.body.appendChild(CreateDiv);
+     AppendElem.setAttribute('class', 'circle');
+     CreateDiv.style.position = "absolute";
+      randomPosTop = Math.floor((Math.random() * ScreenHeight-100) + 1);
+     CreateDiv.style.top = randomPosTop + "px";
+      randomPosLeft = Math.floor((Math.random() * ScreenWidth-100) + 1);
+     CreateDiv.style.left = randomPosLeft + "px";
+	  randomColor = '#'+Math.random().toString(16).substring(2,8);
+	 CreateDiv.style.backgroundColor = randomColor;
+   }
+   
+}
+
+
+ 
+ //calling the functions in different intervals
+
+setInterval(bubbles, 1000 );
+
+setInterval(bubbles, 2000);
+
+setInterval(bubbles, 3000);
+
+setInterval(bubbles, 4000);
+
+setInterval(bubbles, 5000);
+
+									   
+</script>
+
+<body>
+</body>
+</html>
